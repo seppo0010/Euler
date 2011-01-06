@@ -1,0 +1,4 @@
+main
+*.[ao]
+bigint/bi_bc
+bigint/bi_factor
