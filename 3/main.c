@@ -3,7 +3,7 @@
 int main() {
 	unsigned long long num = 600851475143;
 	unsigned long long max = 0;
-	printf("%d\n", is_prime(num, &max));
+	is_prime(num, &max);
 	printf("%llu\n", max);
 }
 
