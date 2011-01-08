@@ -1,2 +1,3 @@
 The 12 and 26 solutions are not fast enough.
 The 33 has no solution yet. I missunderstood the problem and guessed the answer.
+On 54 Mac OS X and Linux are reporting slightly different answers. After running valgrind it's reporting Conditional jump or move depends on uninitialised on main.c:280, but I can't find out why.
