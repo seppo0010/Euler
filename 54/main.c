@@ -162,6 +162,113 @@ int is_royal_flush(hand _hand) {
 	return 0;
 }
 
+double high_card_value(hand _hand) {
+	int values[5];
+	int i,j,k,v;
+	for (i=0;i<5;++i) {
+		v = num_value(_hand.cards[i].num);
+		for (j=0;j<i;++j) {
+			if (v > values[j]) {
+				for (k=i;k>=j;--k) {
+					values[k] = values[k-1];
+				}
+				break;
+			}
+		}
+		values[j] = v;
+	}
+	double ret = 0.0;
+	for (i=0;i<5;++i) {
+		ret += (double)values[i] / pow(14.0, (double)i+1.0);
+	}
+	return ret;
+}
+
+double pair_value(hand _hand) {
+	int prod = 1;
+	int num, i;
+	for (i=0;i<5;++i) {
+		num = num_prime_value(_hand.cards[i].num);
+		if (prod % num == 0) {
+			return (double)num / 42.0;
+		}
+		prod *= num;
+	}
+	return 0.0;
+}
+
+double two_pairs_value(hand _hand) {
+	int prod = 1;
+	int max = 0, min = 0;
+	int num, i;
+	for (i=0;i<5;++i) {
+		num = num_prime_value(_hand.cards[i].num);
+		if (prod % num == 0) {
+			if (max == 0) {
+				max = num;
+			} else {
+				if (max > num) {
+					min = num;
+				} else {
+					min = max;
+					max = num;
+				}
+			}
+		}
+		prod *= num;
+	}
+	return (double)max / 42.0 + (double)min / 42.0 / 42.0;
+}
+
+double three_of_a_kind_value(hand _hand) {
+	int prod = 1;
+	int num, i;
+	for (i=0;i<5;++i) {
+		num = num_prime_value(_hand.cards[i].num);
+		if (prod % (int)pow((double)num, 2.0) == 0) return (double)num/42.0;
+		prod *= num;
+	}
+	return 0.0;
+}
+
+double straight_value(hand _hand) {
+	int max = 0;
+	int i, v;
+	for (i=0;i<5;++i) {
+		v = num_value(_hand.cards[i].num);
+		if (v > max) max = v;
+	}
+	return (double)max / 14.0;
+}
+
+double flush_value(hand _hand) {
+	return high_card_value(_hand);
+}
+
+double full_house_value(hand _hand) {
+	return three_of_a_kind_value(_hand);
+}
+
+double four_of_a_kind_value(hand _hand) {
+	int i, num, prod = 1;
+	for (i=0;i<5;++i) {
+		num = num_prime_value(_hand.cards[i].num);
+		if (prod % num == 0) return (double)num/42.0;
+		prod *= num;
+	}
+	return 0.0;
+}
+
+double straight_flush_value(hand _hand) {
+	int value = 0;
+	int i, num;
+	for (i=0;i<5;++i) {
+		num = num_value(_hand.cards[i].num);
+		if (num > value) value = num;
+	}
+	return (double)value/14.0;
+}
+
 double hand_value(hand _hand) {
 	double ret;
 	if (is_royal_flush(_hand)) ret = 10.0;

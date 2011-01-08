@@ -1,2 +1,2 @@
 all:
-	$(CC) -g -Wall -o main main.c 
+	$(CC) -lm -Wall -o main main.c 
