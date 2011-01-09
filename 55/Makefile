@@ -1,2 +1,2 @@
 all:
-	$(CC) -Wall -I ../bigint -o main ../bigint/bigint.a main.c 
+	$(CC) -g -Wall -I ../bigint -o main ../bigint/bigint.a main.c 
