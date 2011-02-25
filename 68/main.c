@@ -13,7 +13,7 @@ int main() {
 	int v[4];
 	int found = 0;
 	while (1) {
-		for (n[0]=9;n[0]>=0;n[0]--) {
+		for (n[0]=6;n[0]>=0;n[0]--) {
 			for (n[1]=9;n[1]>=0;n[1]--) {
 				if (n[0] == n[1]) continue;
 				for (n[2]=9;n[2]>=0;n[2]--) {
@@ -25,6 +25,7 @@ int main() {
 						if (n[0] == n[3]) continue;
 						if (n[1] == n[3]) continue;
 						if (n[2] == n[3]) continue;
+						if (n[3] != 0 && n[0] > n[3]) continue;
 						for (n[4]=9;n[4]>=0;n[4]--) {
 							if (n[0] == n[4]) continue;
 							if (n[1] == n[4]) continue;
@@ -39,6 +40,7 @@ int main() {
 								if (n[2] == n[5]) continue;
 								if (n[3] == n[5]) continue;
 								if (n[4] == n[5]) continue;
+								if (n[5] != 0 && n[0] > n[5]) continue;
 								for (n[6]=9;n[6]>=0;n[6]--) {
 									if (n[0] == n[6]) continue;
 									if (n[1] == n[6]) continue;
@@ -57,6 +59,7 @@ int main() {
 										if (n[4] == n[7]) continue;
 										if (n[5] == n[7]) continue;
 										if (n[6] == n[7]) continue;
+										if (n[7] != 0 && n[0] > n[7]) continue;
 										for (n[8]=9;n[8]>=0;n[8]--) {
 											if (n[0] == n[8]) continue;
 											if (n[1] == n[8]) continue;
@@ -79,6 +82,7 @@ int main() {
 												if (n[6] == n[9]) continue;
 												if (n[7] == n[9]) continue;
 												if (n[8] == n[9]) continue;
+												if (n[9] != 0 && n[0] > n[9]) continue;
 												v[4] = n[9] + n[8] + n[1];
 												if (n[9] == 0 || n[8] == 0 || n[1] == 0) v[4] += 10;
 												if (v[0] != v[4]) continue;
