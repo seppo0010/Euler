@@ -4,3 +4,4 @@ On 54 Mac OS X and Linux are reporting slightly different answers. After running
 For some reason, the 61 order had to be Octogonal, Hexagonal, Pentagonal, Triangle, Square, Heptagonal. The order is important for the sequence but I couldn't find why that was the right order.
 Seems like I resolved and lost 76 and 77. :(
 I tried a partial run for problem 95 and it was accepted, so I don't know but I don't even know if it ever finishes.
+104 is running in ~4 minutes, it should be possible to improve.
